@@ -1,0 +1,34 @@
+.menu-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    width: 30px;
+}
+
+.hamburger {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: $primaryColorFont;
+    margin-block: 5px;
+    border-radius: 4px;
+    transition: transform .5s;
+    opacity: .25s;
+}
+
+// .hamburger.active .line:nth-child(1){
+//     transform: translateY(7px)
+//     rotate(45deg);
+// }
+// .hamburger.active .line:nth-child(2){
+//     transform: translateY(-7px)
+//     rotate(-45deg);
+// }

@@ -1,0 +1,28 @@
+.identification {
+    width: 160px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.space-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.table-icons {
+    color: $primaryColor;
+    cursor: pointer;
+    margin: 5px;
+}
+
+@media screen and (max-width: 670px) {
+    .hideColumns {
+        display: none;
+    }
+}

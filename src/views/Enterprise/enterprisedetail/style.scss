@@ -1,0 +1,41 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.keep-adding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+}
+
+.hide-keep-adding {
+    visibility: hidden;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    flex: 1 1 auto;
+}
+
+#identification {
+    flex: 0 0 150px;
+}
+
+#corporate-name {
+    flex: 3 1 200px;
+}
+.fullsize{
+    flex: 1 1 auto;
+}
+
+

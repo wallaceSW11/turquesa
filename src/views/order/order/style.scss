@@ -1,0 +1,17 @@
+.information, .product {
+    border: 1px solid $primaryColor;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    margin: 5px;
+}
+
+.product {
+    margin: 10px 0;
+}
