@@ -1,5 +1,5 @@
 <template>
-    <div class="float-button" @click="callback">
+    <div class="float-button" @click="$emit('clicked')">
         <img src="@/assets/icons/plus-solid.svg" alt="back" class="plus-icon" />
     </div>
 </template>

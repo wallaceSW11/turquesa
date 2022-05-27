@@ -17,7 +17,7 @@
         </div>
 
         <footer>
-            <div class="details" @click="callback">
+            <div class="details" @click="$emit('clicked')">
                 <span>Detalhes do pedido</span>
                 <span>></span>
             </div>

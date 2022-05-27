@@ -36,6 +36,13 @@ const orders = [
         status: "Aguardando aprovação",
         deadline: "30/07/2022 13:30",
     },
+    {
+        id: 6,
+        imageId: "photo5.jpg",
+        client: "Constantino",
+        status: "Aguardando aprovação",
+        deadline: "28/07/2022 13:30",
+    },
 ];
 
 function getAll() {

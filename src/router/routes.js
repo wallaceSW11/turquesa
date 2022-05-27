@@ -1,6 +1,7 @@
 import Login from "@/views/login/Login.vue";
 import Orders from "@/views/order/orders/OrdersView.vue";
-import OrderDetail from "@/views/order/order/OrderDetail.vue";
+import OrderDetail from "@/views/order/orderdetail/OrderDetailView.vue";
+import OrderRegistrationView from "@/views/order/orderregistrationview/OrderRegistrationView.vue";
 
 const routes = [
     {
@@ -12,6 +13,13 @@ const routes = [
         name: "Orders",
         component: Orders,
         title: "Orders",
+        meta: { requiredAuth: true },
+    },
+    {
+        path: "/orderregistration",
+        name: "Order Registration",
+        component: OrderRegistrationView,
+        title: "Order Registration",
         meta: { requiredAuth: true },
     },
     {

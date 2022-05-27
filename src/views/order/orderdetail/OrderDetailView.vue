@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="information">
-            <span>Status: {{ order.status }}</span>
-            <span>Cliente: {{ order.client }}</span>
+            <span>Status: {{ order.status }}</span> <br>
+            <span>Cliente: {{ order.client }}</span> <br>
             <span>Data de entrega: {{ order.deadline }}</span>
         </div>
 
@@ -91,23 +91,14 @@ export default {
             order: { type: Object, default: () => {} },
         };
     },
-    mounted() {
-        let id = this.$route.params.id;
-        console.log(id);
-        if (!id) return;
+    mounted() {        
         this.getOrder();
     },
     methods: {
         getOrder() {
             let id = this.$route.params.id;
-
-            console.log(id);
-
             if (!id) return;
-
             this.order = orderService.getById(id);
-
-            console.log(this.order);
         },
     },
 };

@@ -6,11 +6,11 @@
                 :status="order.status"
                 :client="order.client"
                 :deadline="order.deadline"
-                :callback="orderDetail"
+                @clicked="orderDetail(order.id)"
             />
         </div>
 
-        <FloatButton :callback="() => {}" />
+        <FloatButton @clicked="orderRegistration" />
     </div>
 </template>
 
@@ -34,14 +34,16 @@ export default {
         this.getOrders();
     },
     methods: {
-        orderDetail(event, value) {
-            console.log("id");
-            console.log(value);
-
-            // this.$router.push({
-            //     name: "Order Detail",
-            //     params: { id: id },
-            // });
+        orderDetail(id) {
+            this.$router.push({
+                name: "Order Detail",
+                params: { id: id },
+            });
+        },
+        orderRegistration() {
+            this.$router.push({
+                name: "Order Registration"
+            });
         },
 
         getOrders() {
