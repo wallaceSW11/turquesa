@@ -10,15 +10,11 @@
 .content {
     display: flex;
     flex-direction: row;
-
-
 }
 
-.image {
-    height: 60px;
-    width: 50px;
+.image img {
+    width: 60px;
     margin: 5px;
-    //background-color: $primaryColor;
 }
 
 .resume {
@@ -33,7 +29,7 @@
     padding: 0 5px;
 }
 
-.details > span:last-child{
+.details > span:last-child {
     font-weight: bold;
 }
 
@@ -41,4 +37,5 @@ footer {
     background-color: $secondaryColor;
     margin-top: 2px;
     padding: 2px;
+    cursor: pointer;
 }

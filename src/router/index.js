@@ -10,38 +10,30 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+    let token = localStorage.getItem("user");
 
-    let token = localStorage.getItem('user');
-
-    if (to.name == 'Login'){
-
-        if (token){
-          next({name: 'Dashboard'});
+    if (to.name == "Login") {
+        if (token) {
+            next({ name: "Orders" });
         } else {
-          next();
+            next();
         }
-    } else if (to.matched.some(rota => rota.meta.requiredAuth)){
-
-      if (token == null) {
-        next({
-          path: "/login",
-          params: {nextUrl: to.fullPath}
-        });
-
-      } else {
-        next();
-      }
-
+    } else if (to.matched.some((rota) => rota.meta.requiredAuth)) {
+        if (token == null) {
+            next({
+                path: "/login",
+                params: { nextUrl: to.fullPath },
+            });
+        } else {
+            next();
+        }
     } else {
-
-      if(token == null){
-        next();
-
-      }else{
-        next({name: 'Dashboard'})
-      }
+        if (token == null) {
+            next();
+        } else {
+            next({ name: "Orders" });
+        }
     }
-
 });
 
 export default router;
