@@ -1,6 +1,6 @@
 <template>
-    <div class="title">
-        <h2>{{text}}</h2>
+    <div class="title" @click="$emit('clicked')">
+        <h6>{{text}}</h6>
         <hr />
     </div>
 </template>
@@ -10,6 +10,7 @@ export default {
     name: 'Title',
     props: {
         text: { type: String, default: '' }
+
     }
 }
 </script>

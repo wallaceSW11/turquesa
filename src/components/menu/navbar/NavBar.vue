@@ -5,7 +5,7 @@
                 <MenuButton :callback="toggleMenu" :clicked="menuOpened" />
             </div>
                 <img v-else src="@/assets/icons/arrow-left-solid.svg" alt="back" class="back-button" @click="$router.back()">
-            <div class="title"><h5>Pedidos</h5></div>
+            <div class="title"><h1>Pedidos</h1></div>
         </nav>
     </header>
 </template>
@@ -38,7 +38,9 @@ export default {
             this.$router.push({ name: page });
         },
         toggleMenu() {
-            this.menuOpened = !this.menuOpened;
+            // this.menuOpened = !this.menuOpened;
+            localStorage.removeItem("user");
+            this.$router.push({ name: "Login"});
         },
     },
     mounted() {

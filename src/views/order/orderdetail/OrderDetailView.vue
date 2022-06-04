@@ -1,106 +1,97 @@
 <template>
-    <div class="container">
-        <div class="information">
-            <span>Status: {{ order.status }}</span> <br>
-            <span>Cliente: {{ order.client }}</span> <br>
-            <span>Data de entrega: {{ order.deadline }}</span>
-        </div>
-
-        <div class="products">
-            <div class="list-products">
-                <div class="product">
-                    Produto: Topo <br />
-                    Tipo: Especial (Camadas) <br />
-                    Tamanho: 25 cm <br />
-                    Tema: Marsha <br />
-                    Preço: R$ 25,00 <br />
-                    Fotos: (sugestões)
-                    <div class="images">
-                        <img
-                            src="https://source.unsplash.com/random/100x100?cake"
-                            alt=""
-                        />
-                        <img
-                            src="https://source.unsplash.com/random/100x100?paper"
-                            alt=""
-                        />
-                        <img
-                            src="https://source.unsplash.com/random/100x100?garden"
-                            alt=""
-                        />
-                    </div>
-                </div>
-
-                <div class="product">
-                    Produto: Topo <br />
-                    Tipo: Simples (Impresso) <br />
-                    Tamanho: 15 cm <br />
-                    Tema: Nome + Idade <br />
-                    Preço: R$ 15,00 <br />
-                    Fotos: (sugestões)
-                    <div class="images">
-                        <img
-                            src="https://source.unsplash.com/random/100x100?flower"
-                            alt=""
-                        />
-                        <img
-                            src="https://source.unsplash.com/random/100x100?sky"
-                            alt=""
-                        />
-                        <img
-                            src="https://source.unsplash.com/random/100x100?sea"
-                            alt=""
-                        />
-                    </div>
-                </div>
-
-                <div class="product">
-                    Produto: Caixa explosão <br />
-                    Tipo: Com gaveta <br />
-                    Tamanho: 35 cm <br />
-                    Tema: Azul <br />
-                    Preço: R$ 45,00 <br />
-                    Fotos: (sugestões)
-                    <div class="images">
-                        <img
-                            src="https://source.unsplash.com/random/100x100?table"
-                            alt=""
-                        />
-                        <img
-                            src="https://source.unsplash.com/random/100x100?sunset"
-                            alt=""
-                        />
-                        <img
-                            src="https://source.unsplash.com/random/100x100?food"
-                            alt=""
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <Title text="Identificação" />
+    <div class="information">
+      <TitleDescription title="Status" :description="order.status" />
+      <TitleDescription title="Cliente" :description="order.client" />
+      <TitleDescription title="Data de entrega" :description="order.deadline" />
     </div>
+
+    <Title text="Produtos" @clicked="toggleProducts" />
+
+    <div class="products">
+      <transition name="products">
+        <div v-show="showProducts">
+          <div
+            class="product"
+            v-for="(item, itemIndex) in order.items"
+            :key="itemIndex"
+          >
+            <TitleDescription title="Entrega" :description="item.deadline" />
+            <TitleDescription title="Produto" :description="item.product" />
+            <TitleDescription title="Tipo" :description="item.type" />
+            <TitleDescription title="Tamanho" :description="item.size" />
+            <TitleDescription title="Tema" :description="item.theme" />
+            <TitleDescription title="Preço" :description="item.price" />
+            <TitleDescription title="Fotos" />
+            <div class="images">
+              <img
+                v-for="(pic, index) in order.items[itemIndex].pics"
+                :key="index"
+                :src="pic.url"
+                alt=""
+              />
+            </div>
+            <TitleDescription title="Observação" />
+            <span>{{ order.items[itemIndex].note }} </span>
+          </div>
+        </div>
+      </transition>
+    </div>
+
+    <Title text="Pagamento" />
+    <div class="payment">
+      <table class="table">
+        <thead>
+          <td><b>Forma de pagamento</b></td>
+          <td><b>Valor</b></td>
+        </thead>
+        <tbody>
+          <tr v-for="(payment, index) in order.payment" :key="index">
+            <td>{{ payment.form }}</td>
+            <td>{{ payment.value }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
 
 <script>
 import orderService from "@/services/order-service";
+import Title from "@/components/titles/title/Title.vue";
+import TitleDescription from "@/components/fields/titledescription/TitleDescription.vue";
 
 export default {
-    name: "OrderDetail",
-    data() {
-        return {
-            order: { type: Object, default: () => {} },
-        };
+  name: "OrderDetail",
+  components: {
+    Title,
+    TitleDescription,
+  },
+  data() {
+    return {
+      order: {
+        status: "",
+        client: "",
+        dealine: "",
+      },
+      showProducts: { type: Boolean, default: true },
+    };
+  },
+  mounted() {
+    this.getOrder();
+  },
+  methods: {
+    getOrder() {
+      let id = this.$route.params.id;
+      if (!id) return;
+      this.order = orderService.getById(id);
+      console.log(this.order.items[0].pics[0].url);
     },
-    mounted() {        
-        this.getOrder();
+    toggleProducts() {
+      this.showProducts = !this.showProducts;
     },
-    methods: {
-        getOrder() {
-            let id = this.$route.params.id;
-            if (!id) return;
-            this.order = orderService.getById(id);
-        },
-    },
+  },
 };
 </script>
 

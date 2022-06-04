@@ -1,3 +1,7 @@
+.information {
+    margin-bottom: 10px;
+}
+
 .information,
 .product {
     border: 1px solid $primaryColor;
@@ -14,5 +18,24 @@
 }
 
 .product {
-    margin: 10px 0;
+    margin-bottom: 5px;
+}
+
+.table {
+    width: 100%;
+}
+
+
+.products-enter-active {
+    transition: transform 0.35s ease-out, opacity 0.28s ease-out;
+  }
+  
+  .products-leave-active {
+    transition: transform 0.35s ease-in, opacity 0.28s ease-in;
+  }
+  
+.products-enter-from,
+.products-leave-to {
+  transform: translateY(-30px) scale(0.96);
+  opacity: 0;
 }

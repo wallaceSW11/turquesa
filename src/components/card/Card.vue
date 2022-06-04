@@ -6,13 +6,10 @@
             </div>
             <div class="resume">
                 <div class="title">
-                    <span>
-                        Cliente:
-                        {{ client }}
-                    </span>
+                    <TitleDescription title="Cliente" :description="client" />
                 </div>
-                <div class="status">Status: {{ status }}</div>
-                <div class="delivery">Entrega: {{ deadline }}</div>
+                <div><TitleDescription title="Status" :description="status" /></div>
+                <div><TitleDescription title="Entrega" :description="deadline" /></div>
             </div>
         </div>
 
@@ -26,8 +23,13 @@
 </template>
 
 <script>
+import TitleDescription from '@/components/fields/titledescription/TitleDescription.vue';
+
 export default {
     name: "Card",
+    components: {
+        TitleDescription,
+    },
     props: {
         imageId: { type: String, default: "" },
         status: { type: String, default: "" },
@@ -47,14 +49,6 @@ export default {
             console.log(this.client);
         },
     },
-    // methods: {
-    //     toggleOrder(idOrder) {
-    //         this.$router.push({
-    //             name: "Order Detail",
-    //             params: { id: idOrder },
-    //         });
-    //     },
-    // },
 };
 </script>
 

@@ -25,6 +25,7 @@
             </div>
             <span>Tamanho</span> <br>
             <div class="products">
+                
                 <select name="hour" id="" :value="order.hour">
                     <option value="1300">15 cm</option>
                     <option value="1330">20 cm</option>
@@ -59,7 +60,11 @@ export default {
     data() {
         return {
             order: {},
-            orderItens: {}
+            orderItens: {},
+            optionsSize: [
+                { value: null, text: "Selecione o tamanho"},
+                { value: 1, text: "10 cm"}
+            ]
 
         }
     },
