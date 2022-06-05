@@ -1,37 +1,45 @@
-.button-style{
-    margin: 5px;
+.main-button {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  max-width: 100%;
+  margin: 0;
+  padding: 5px 0;
+  border: 1px solid $primaryColor;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-button {
-    width: 100%;
-
-    padding: 8px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.main-button:hover {
+  background-color: $secondaryColor;
+  border: 1px solid $secondaryColor;
+  transition: 0.3s;
 }
 
-button:hover {
-    background-color: $secondaryColor;
-    border: 1px solid $secondaryColor;
-    transition: .3s;
+.main-button.primaria:hover {
+  color: #333;
 }
 
-button.secundaria:hover{
-    color: #fff;
-    border: 1px solid $secondaryColor;
-    transition: .5s;
+.main-button.secundaria:hover {
+  color: #fff;
+  border: 1px solid $secondaryColor;
+  transition: 0.5s;
 }
 
 .primaria {
-    background-color: $primaryColor;
-    color: #fff;
-    border: 1px solid $primaryColor;
+  max-width: 100%;
+  margin: 0;
+  background-color: $primaryColor;
+  color: #fff;
+  border: 1px solid $primaryColor;
+  border-radius: 4px;
 }
 
 .secundaria {
-    background-color: #fff;
-    color: #333;
-    border: 1px solid $primaryColor;
+  max-width: 100%;
+  margin: 0;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid $primaryColor;
+  border-radius: 4px;
 }

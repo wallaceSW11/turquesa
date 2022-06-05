@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="main-container">
     <Title text="Identificação" />
     <div class="information">
       <TitleDescription title="Status" :description="order.status" />

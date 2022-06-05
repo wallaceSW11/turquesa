@@ -20,9 +20,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.routes-enter,
-.routes-leave {
-  transition: transform 0.35s ease-out, opacity 0.28s ease-out;
-}
-</style>
+<style scoped></style>

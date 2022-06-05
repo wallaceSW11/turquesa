@@ -1,7 +1,11 @@
 
-.container {
+.main {
     border: 1px solid $primaryColor;
     border-radius: 5px;
+    max-width: 500px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
 }
 
 img {
@@ -16,3 +20,12 @@ img {
 .title {
     text-align: center;
 }
+
+@media screen and (max-width: 500px){
+    .main {
+        padding: 5px;
+        margin: 5px;
+    }
+    
+}
+
