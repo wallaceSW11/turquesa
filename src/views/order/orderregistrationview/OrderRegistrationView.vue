@@ -41,7 +41,30 @@
     </div>
 
     <div v-else class="product">
-      <Select label="Produto" :options="optionsProduct" />
+      <!-- <select
+        label="Produto"
+        :options="optionsProduct"
+        v-model="product.name"
+      /> -->
+      <div>
+        <label for="prods">Produto: </label>
+        <select name="prods" v-model="product.name">
+          <option value="topo">Topo</option>
+          <option value="caixa">Caixa</option>
+          <option value="escrita">Escrita</option>
+        </select>
+      </div>
+      <div>
+        <label for="qt">Quantidade: </label>
+        <input type="number" name="quantity" v-model="product.quantity" />
+      </div>
+      <div>
+        <label for="price">Valor: </label>
+        <span name="price">{{ product.price }}</span>
+      </div>
+      <div>
+        <Checkbox text="Continuar adicionando" v-model="keepAdding" />
+      </div>
     </div>
 
     <footer class="actions">
@@ -56,6 +79,7 @@ import InputLabel from "@/components/inputs/input/InputLabel.vue";
 import Button from "@/components/buttons/button/Button.vue";
 import Select from "@/components/inputs/select/Select.vue";
 import Title from "@/components/titles/title/Title.vue";
+import Checkbox from "@/components/inputs/checkbox/Checkbox.vue";
 
 export default {
   name: "OrderRegistrationView",
@@ -64,6 +88,7 @@ export default {
     Button,
     Select,
     Title,
+    Checkbox,
   },
   data() {
     return {
@@ -74,9 +99,9 @@ export default {
         { value: 1, text: "10 cm" },
       ],
       optionsProduct: [
-        { value: "1", text: "Topo Especial" },
-        { value: "2", text: "Caixa explosão" },
-        { value: "3", text: "Escrita Bento/Flok" },
+        { value: "topo", text: "Topo Especial" },
+        { value: "caixa", text: "Caixa explosão" },
+        { value: "escrita", text: "Escrita Bento/Flok" },
       ],
       hours: [
         {
@@ -92,11 +117,15 @@ export default {
           text: "14:00",
         },
       ],
-      product: "",
+      product: {
+        name: "",
+        quantity: "",
+        price: "35,00",
+      },
       products: [],
 
       addingProduct: false,
-      keepAdding: false,
+      keepAdding: true,
     };
   },
   methods: {
@@ -113,8 +142,19 @@ export default {
       }
 
       if (this.keepAdding) {
-        this.product = "";
+        this.product = {
+          name: "",
+          quantity: "",
+          price: "35,00",
+        };
       } else {
+        console.log(this.product);
+        this.products.push(this.product);
+        this.product = {
+          name: "",
+          quantity: "",
+          price: "35,00",
+        };
         this.addingProduct = false;
       }
     },

@@ -16,9 +16,13 @@
 <script>
 export default {
   name: "Select",
+  model: {
+    prop: "selection",
+    event: "onChange",
+  },
   props: {
     label: { type: String, require },
-
+    selection: { type: String, default: "" },
     options: {
       value: "",
       text: "",
@@ -26,9 +30,17 @@ export default {
   },
 
   data() {
-    return {
-      selected: "",
-    };
+    return {};
+  },
+  computed: {
+    selected: {
+      get: function () {
+        return this.selection;
+      },
+      set: function (newValue) {
+        this.$emit("onChange", newValue);
+      },
+    },
   },
 };
 </script>
