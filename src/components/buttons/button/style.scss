@@ -1,44 +1,50 @@
+@mixin border-style($color) {
+  background-color: $color;
+  border: 1px solid $color;
+}
+
+%transition {
+  transition: 0.3s;
+}
+
 .main-button {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  max-width: 100%;
-  margin: 0;
+  @extend %u-centered, %u-full-width, %u-no-margin;
+  @include border-style($primaryColor);
+
   padding: 5px 0;
-  border: 1px solid $primaryColor;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .main-button:hover {
-  background-color: $secondaryColor;
-  border: 1px solid $secondaryColor;
-  transition: 0.3s;
+  @include border-style($secondaryColor);
+  @extend %transition;
 }
 
-.main-button.primaria:hover {
+.main-button .primaria:hover {
   color: #333;
+  @extend %transition;
 }
 
 .main-button.secundaria:hover {
-  color: #fff;
-  border: 1px solid $secondaryColor;
-  transition: 0.5s;
+  @extend %transition;
+  @include border-style($secondaryColor);
+  color: var(--ligth-color);
 }
 
 .primaria {
   max-width: 100%;
   margin: 0;
   background-color: $primaryColor;
-  color: #fff;
-  border: 1px solid $primaryColor;
+  color: var(--ligth-color);
+  @include border-style($primaryColor);
   border-radius: 4px;
 }
 
 .secundaria {
   max-width: 100%;
   margin: 0;
-  background-color: #fff;
+  background-color: var($primaryColorFont);
   color: #333;
   border: 1px solid $primaryColor;
   border-radius: 4px;
