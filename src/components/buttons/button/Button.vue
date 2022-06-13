@@ -1,7 +1,7 @@
 <template>
   <div
     :class="['main-button', secondary ? 'secundaria' : 'primaria']"
-    @click="$emit('clicked')"
+    @click="clicked"
   >
     <span>{{ text }}</span>
   </div>
@@ -17,6 +17,11 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    clicked() {
+      this.$emit("clicked");
+    },
   },
 };
 </script>

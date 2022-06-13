@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     addProduct() {
-      //this.$router.push({ name: "Order Detail Product" });
+      if (this.addingProduct) return;
       this.addingProduct = !this.addingProduct;
     },
     save() {
@@ -142,13 +142,13 @@ export default {
       }
 
       if (this.keepAdding) {
+        this.products.push(this.product);
         this.product = {
           name: "",
           quantity: "",
           price: "35,00",
         };
       } else {
-        console.log(this.product);
         this.products.push(this.product);
         this.product = {
           name: "",
@@ -159,14 +159,15 @@ export default {
       }
     },
     cancel() {
-      if (!this.addingProduct) {
+      if (this.addingProduct) {
         // validar cadastro
         // salvar order
-        this.$router.push({ name: "Orders" });
+        // this.$router.push({ name: "Orders" });
+        this.addingProduct = !this.addingProduct;
         return;
       }
 
-      this.addingProduct = !this.addingProduct;
+      this.$router.back();
     },
   },
 };

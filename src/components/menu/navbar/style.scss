@@ -1,27 +1,38 @@
 nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: $primaryColor;
-    width: 100%;
-    height: 40px;
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-between;
+  background-color: $primaryColor;
+  width: 100%;
+  height: 40px;
 }
 
 nav h1 {
-    color: $primaryColorFont;
-    margin: 0;
+  color: $primaryColorFont;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
 }
 
 .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding-right: 10%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  //   padding-right: 10%;
 }
 
 .back-button {
-    padding: 5px;
-    filter: invert(100%) sepia(0%) saturate(14%) hue-rotate(307deg) brightness(105%) contrast(105%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  filter: invert(100%) sepia(0%) saturate(14%) hue-rotate(307deg)
+    brightness(105%) contrast(105%);
+}
+
+.menu-mobile {
+  height: 40px;
+  width: 40px;
 }
